@@ -1,0 +1,60 @@
+\documentclass{beamer}
+
+% To avoid problems with .out files
+\usepackage{bookmark}
+
+% Overall theme
+\usetheme{Madrid}
+
+% Enable default preamble
+\input{default}
+
+% Make title page simple
+\setbeamertemplate{title page}[default]
+\setbeamercolor{titlelike}{parent=structure,bg=white}
+
+% Make blocks rectangular
+\setbeamertemplate{blocks}[default]
+
+% Make listings look nice
+\setlist[itemize]{label= \color{darkgray} $\bullet$}
+\setlist[enumerate]{label= \color{darkgray} \arabic*.}
+
+% Fix hyperref interference with beamer footline
+\setbeamertemplate{footline}{%
+  \leavevmode
+  \hbox{%
+    \begin{beamercolorbox}[
+      wd=.333333\paperwidth,
+      ht=2.25ex,
+      dp=1ex,
+      center
+    ]{author in head/foot}%
+      \usebeamerfont{author in head/foot}%
+      \insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[
+      wd=.333333\paperwidth,
+      ht=2.25ex,
+      dp=1ex,
+      center
+    ]{title in head/foot}%
+      \usebeamerfont{title in head/foot}%
+      \hypersetup{hidelinks}%
+      \insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[
+      wd=.333333\paperwidth,
+      ht=2.25ex,
+      dp=1ex,
+      center
+    ]{date in head/foot}%
+      \usebeamerfont{date in head/foot}%
+      \insertshortdate
+      \hspace*{10ex}
+      \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+    \end{beamercolorbox}%
+  }
+  \par
+  \vspace{0pt}%
+}

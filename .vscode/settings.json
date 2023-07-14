@@ -1,0 +1,26 @@
+{
+  "files.exclude": {
+    "*.aux": true,
+    "*.toc": true,
+    "*.gz": true,
+    "*.log": true,
+    "*.fls": true,
+    "*.fdb_latexmk": true,
+    "*.bbl": true,
+    "*.blg": true,
+    "*.nav": true,
+    "*.out": true,
+    "*.snm": true,
+    "*.synctex.gz": true,
+    "*.synctex": true,
+    "*.synctex(busy)": true,
+    "*.synctex.gz(busy)": true,
+    "*.vrb": true
+  },
+  "grammarly.selectors": [
+    {
+      "language": "latex",
+      "scheme": "file"
+    }
+  ]
+}

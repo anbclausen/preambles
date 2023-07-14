@@ -1,0 +1,141 @@
+% Setup
+\usepackage[utf8]{inputenc}
+
+% Math
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{xspace} % for making spacing nicer in macros
+
+\newcommand{\xor}{\oplus}
+\newcommand{\beq}{\stackrel{?}{=}}
+\renewcommand{\mod}{\text{ mod }}
+\newcommand{\QED}{\ensuremath{\square}}
+
+\newcommand{\mc}[1]{\ensuremath{\mathcal{#1}}\xspace}
+\newcommand{\mb}[1]{\ensuremath{\mathbb{#1}}\xspace}
+
+%% Mathcal Chars
+\newcommand{\Ac}{\mc{A}}
+\newcommand{\Bc}{\mc{B}}
+\newcommand{\Cc}{\mc{C}}
+\newcommand{\Dc}{\mc{D}}
+\newcommand{\Ec}{\mc{E}}
+\newcommand{\Fc}{\mc{F}}
+\newcommand{\Gc}{\mc{G}}
+\newcommand{\Hc}{\mc{H}}
+\newcommand{\Ic}{\mc{I}}
+\newcommand{\Jc}{\mc{J}}
+\newcommand{\Kc}{\mc{K}}
+\newcommand{\Lc}{\mc{L}}
+\newcommand{\Mc}{\mc{M}}
+\newcommand{\Nc}{\mc{N}}
+\newcommand{\Oc}{\mc{O}}
+\newcommand{\Pc}{\mc{P}}
+\newcommand{\Qc}{\mc{Q}}
+\newcommand{\Rc}{\mc{R}}
+\newcommand{\Sc}{\mc{S}}
+\newcommand{\Tc}{\mc{T}}
+\newcommand{\Uc}{\mc{U}}
+\newcommand{\Vc}{\mc{V}}
+\newcommand{\Wc}{\mc{W}}
+\newcommand{\Xc}{\mc{X}}
+\newcommand{\Yc}{\mc{Y}}
+\newcommand{\Zc}{\mc{Z}}
+
+%% Mathbb Chars
+\newcommand{\Ab}{\mb{A}}
+\newcommand{\Bb}{\mb{B}}
+\newcommand{\Cb}{\mb{C}}
+\newcommand{\Db}{\mb{D}}
+\newcommand{\Eb}{\mb{E}}
+\newcommand{\Fb}{\mb{F}}
+\newcommand{\Gb}{\mb{G}}
+\newcommand{\Hb}{\mb{H}}
+\newcommand{\Ib}{\mb{I}}
+\newcommand{\Jb}{\mb{J}}
+\newcommand{\Kb}{\mb{K}}
+\newcommand{\Lb}{\mb{L}}
+\newcommand{\Mb}{\mb{M}}
+\newcommand{\Nb}{\mb{N}}
+\newcommand{\Ob}{\mb{O}}
+\newcommand{\Pb}{\mb{P}}
+\newcommand{\Qb}{\mb{Q}}
+\newcommand{\Rb}{\mb{R}}
+\newcommand{\Sb}{\mb{S}}
+\newcommand{\Tb}{\mb{T}}
+\newcommand{\Ub}{\mb{U}}
+\newcommand{\Vb}{\mb{V}}
+\newcommand{\Wb}{\mb{W}}
+\newcommand{\Xb}{\mb{X}}
+\newcommand{\Yb}{\mb{Y}}
+\newcommand{\Zb}{\mb{Z}}
+
+% Plots
+\usepackage{pgfplots}
+\pgfplotsset{compat = newest}
+\NewDocumentCommand{\plot}{O{-2} O{10} O{-2} O{10} m}{
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+        xmin=#1, xmax=#2, ymin=#3, ymax=#4, domain=#1:#2,
+        xticklabel=\empty, yticklabel=\empty,
+        minor tick num=1, axis lines = middle,
+        xlabel=$x$, ylabel=$y$,
+        label style = {at={(ticklabel cs:1.1)}}]
+          \addplot[
+              samples = 300,
+          ] {#5};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+}
+
+% Color
+\usepackage{xcolor}
+
+% Images
+\usepackage{graphicx}
+\newcommand{\img}[2][0.5]{
+    \begin{center}
+        \includegraphics[scale=#1]{#2}
+    \end{center}
+}
+
+% Common text commands
+\newcommand{\I}[1]{\textit{#1}}
+\newcommand{\B}[1]{\textbf{#1}}
+\newcommand{\U}[1]{\underline{#1}}
+\newcommand{\T}[1]{\texttt{#1}}
+\newcommand{\X}[1]{\sout{#1}}
+
+% Special sections
+\newcommand{\todo}{\textbf{\color{red} TODO}}
+\newcommand{\comment}[1]{\textbf{\color{gray} Comment: #1}}
+
+% Lists
+\usepackage{enumitem} % for custom list enumeration
+
+% TikZ
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{automata}
+
+% Tables 
+\usepackage{float}
+
+% Bibliography
+\usepackage[square,numbers]{natbib}
+\bibliographystyle{abbrvnat}
+
+% Links 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+% Email
+\newcommand{\email}[2]{
+  \href{mailto:#1}{#2}
+}

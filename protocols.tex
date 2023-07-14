@@ -1,0 +1,38 @@
+% Crytpographic protocols
+\usepackage{msc}
+\usepackage[normalem]{ulem}
+
+% fix msc package not being able to display math characters
+\makeatletter
+\def\msc@selfmess#1#2#3{
+  \IfStrEq{\mscget{label position}}{left}{\xdef\msc@tempc{-1}}{\xdef\msc@tempc{1}}
+  \xdef\msc@tempb{[\mscget{label position},/msc,message,message loop={#3},
+            \ifmsc@isstar replay,\fi, inner sep=0pt,
+           /tikz/pos=\mscget{pos}, every message, \msc@options]
+           (#1)
+              to node[xshift=\msc@tempc*\mscget{label distance}](msc@lastnode){\unexpanded\expandafter{\msc@mess@name}}
+           (#2);
+          }
+}
+
+\newcommand{\protocol}[3][]{
+  \begin{center}
+    \drawframe{no}
+    \begin{msc}[msc keyword=, instance distance=15em, environment distance=10em, head top distance=5em, label distance=0.2em]{Protocol: \textbf{#2}\\\ \\ \hfill Public: #1 \hfill \mbox{}}
+      #3
+    \end{msc}
+  \end{center}
+}
+\newcommand{\party}[2]{\declinst[]{#1}{}{#2}}
+\newcommand{\knows}[3]{
+  \mess[label position=#3, side=#3]{#2}{#1}{#1}[0]
+  \nextlevel
+}
+\newcommand{\cond}[2]{
+  \condition{#1}{#2}
+  \nextlevel[2]
+}
+\newcommand{\msg}[3]{
+  \mess{#2}{#1}{#3}
+  \nextlevel
+}

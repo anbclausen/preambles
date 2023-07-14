@@ -1,0 +1,255 @@
+\input{article}
+\input{handin}
+\input{code}
+\input{logic}
+\input{protocols}
+
+\usepackage{graphicx}
+\usepackage{array}
+\newcolumntype{M}[1]{>{\arraybackslash}m{#1}}
+\DeclareDocumentCommand{\feature}{mmmO{}}{
+  \\ \hline
+  #1 & \vspace*{1.05em}\begin{lstlisting}[language=MyTeX, numbers=none, backgroundcolor=\color{white}, linewidth=2.5cm]^^J
+$\backslash{}$#2$\{\ldots\}$^^J 
+        \end{lstlisting} &
+  \vspace*{1.05em}\begin{lstlisting}[language=MyTeX, numbers=none, backgroundcolor=\color{white}, linewidth=5cm]^^J
+$\backslash{}$#2$\{$#3$\}$ #4^^J 
+    \end{lstlisting} &
+  \csname#2\endcsname{#3}#4
+}
+\newcommand{\customfeature}[4]{
+  \\ \hline
+  #1 & \vspace*{1.05em}\begin{lstlisting}[language=MyTeX, numbers=none, backgroundcolor=\color{white}, linewidth=2.5cm]^^J
+#2^^J 
+        \end{lstlisting} &
+  \vspace*{1.05em}\begin{lstlisting}[language=MyTeX, numbers=none, backgroundcolor=\color{white}, linewidth=5cm]^^J
+#3^^J 
+    \end{lstlisting} &
+  #4
+}
+\newcommand{\block}[2]{
+  \subsubsection{#1}
+  \begin{center}
+    \begin{tabular}{M{3cm} M{2.5cm} M{5cm} M{4cm}}
+      & \B{Usage} & \B{Example} & \B{Result} 
+     #2 \\
+     \hline 
+    \end{tabular}
+  \end{center}
+}
+
+\title{Preambles in \LaTeX}
+\author{Anders B. Clausen\\ \small \url{https://github.com/anbclausen}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section{Setup}
+Here is how to get going with an article:
+\begin{lstlisting}[language=MyTeX]
+\input{preambles/article}
+
+\title{Your Title}
+\author{Author}
+\date{\today}
+
+\begin{document}
+\maketitle
+$\ldots$
+\end{document}\end{lstlisting}
+
+\section{Preambles}
+\subsection{Articles and Presentations}
+Specify the type of document you are writing by choosing a preamble. For writing articles, use the \T{article} preamble at the top of your document:
+\begin{lstlisting}[language=MyTex]
+\input{preambles/article} \end{lstlisting}
+For writing presentations, use the \T{presentation} preamble at the top of your document:
+\begin{lstlisting}[language=MyTex]
+\input{preambles/presentation} \end{lstlisting} 
+
+\subsection{Default}
+The preambles for articles and presentations offer many kinds of features. Here are all the ones that are enabled by default! If you do not want to use the article or presentation preamble, you can use the \T{default} preamble at the top of your document:
+\begin{lstlisting}[language=MyTex]
+\input{preambles/default} \end{lstlisting}
+
+\block{Common Text Commands}{
+  \feature{Italic Text}{I}{This is italic.}
+  \feature{Bold Text}{B}{This is bold.}
+  \feature{Underlined Text}{U}{This is underlined.}
+  \feature{Teletype (Monospace) Text}{T}{This is teletype.}
+  \feature{Striked Out Text}{X}{This is striked out.}
+}
+
+\block{Special Sections}{
+  \customfeature{Todo Marker}{$\backslash{}$todo}{$\backslash{}$todo}{\todo}
+  \feature{Comment}{comment}{This is a comment.}
+}
+
+\block{Colors}{
+  \feature{Colors from \T{xcolor} package}{color}{blue}[I'm blue... Da ba dee da ba daa...]
+}
+
+\block{Links and Email Addresses}{  
+  \customfeature{Hyper References from \T{hyperref} package}{$\backslash{}$href$\{\ldots\}\{\ldots\}$}{$\backslash{}$href$\{$https://aekvi.com$\}\{$aekvi$\}$}{\href{https://aekvi.com}{aekvi}}
+
+  \customfeature{Emails}{$\backslash{}$email$\{\ldots\}\{\ldots\}$}{$\backslash{}$email$\{$abc@aekvi.com$\}\{$abc$\}$}{\email{abc@aekvi.com}{abc}}
+}
+
+\block{Citing and Bibliography}{
+  \customfeature{Bibliography}{$\backslash{}$bibliography$\{\ldots\}$}{$\backslash{}$bibliography$\{$refs$\}$}{Renders bibliography assuming \T{refs.bib} file exists. See an example at the end of this document.}
+  \feature{Cite}{cite}{clausen}
+}
+All citation features are from the \T{natbib} package. Learn more about it \href{https://www.overleaf.com/learn/latex/Bibliography_management_with_natbib}{here}.
+
+\block{Images}{
+  \customfeature{Images}{$\backslash{}$img$[$scale$]\{\ldots\}$}{$\backslash{}$img$[$0.2$]\{$assets/mandelbrot_set$\}$}{\img[0.2]{assets/mandelbrot_set}assuming assets/mandelbrot\_set.png exists. \T{scale} is optional.}
+}
+
+\block{Plots}{
+  \customfeature{Plots}{$\backslash{}$plot[xmin]\ \ \ [xmax]\ \ \ \ [ymin]\ \ \ \ [ymax]$\{$f$\}$}{$\backslash{}$plot[-2][10][-2][2]$\qquad\qquad\ \{$sin(deg(x))$\}$}{\begin{center}\scalebox{.6}{\parbox{5cm}{\plot[-2][10][-2][2]{sin(deg(x))}}}\end{center}\T{xmin, xmax, ymin, ymax} are optional.}
+}
+
+\subsubsection{TikZ}
+See OverLeafs tutorial on TikZ \href{https://www.overleaf.com/learn/latex/TikZ_package}{here}. Using TikZ libraries \T{arrows}, \T{shapes} and \T{automata} by default.
+
+\block{Math}{
+  \customfeature{\T{mathbb} symbols}{$\backslash$Xb for $X \in A \ldots Z$}{$\backslash$Ab, $\backslash$Bb, $\backslash$Cb, $\backslash$Db}{\Ab, \Bb, \Cb, \Db}
+  \customfeature{\T{mathcal} symbols}{$\backslash$Xc for $X \in A \ldots Z$}{$\backslash$Ac, $\backslash$Bc, $\backslash$Cc, $\backslash$Dc}{\Ac, \Bc, \Cc, \Dc}
+  \customfeature{XOR}{$\$\backslash$xor$\$$}{$\$\backslash$xor$\$$}{$\xor$}
+  \customfeature{Boolean Equality}{$\$\backslash$beq$\$$}{$\$$a$\ \backslash$beq b$\$$}{$a \beq b$}
+  \customfeature{(a nicely behaving) Modulo}{$\$\backslash$mod$\$$}{$\$$a$\ \backslash$mod b$\$$}{$a \mod b$}
+  \customfeature{Q.E.D.}{$\backslash$QED}{$\backslash$QED}{\QED}
+}
+
+\subsection{Handin}
+The handin preamble contains useful features for writing handins. Use the \T{handin} preamble at the top of your document:
+\begin{lstlisting}[language=MyTex]
+\input{preambles/handin} \end{lstlisting}
+
+\subsubsection{Question Areas}
+Question areas are used to highlight exercise descriptions and solutions. You can define a question like so:
+\begin{lstlisting}[language=MyTex]
+\question{Prove $\$$P = NP$\$$.}\end{lstlisting}
+This will render a question area like this:
+
+\question{Prove $P = NP$.}
+\subsection{Code}
+The code preamble contains useful features for writing code. Use the \T{code} preamble at the top of your document:
+\begin{lstlisting}[language=MyTex]
+\input{preambles/code} \end{lstlisting}
+
+\subsubsection{Code Blocks}
+The \T{listings} package is used to render code blocks. One can define a code block like so:
+\begin{lstlisting}[language=MyTex]
+$\backslash$begin{lstlisting}[language=Haskell]
+  main = putStrLn "Hello World!"
+$\backslash$end{lstlisting}
+\end{lstlisting}
+This will render a code block like this:
+\begin{lstlisting}[language=Haskell]
+main = putStrLn "Hello World!"
+\end{lstlisting}
+Note that everything inside dollar symbols (\$) is rendered as math. This means that you can use math symbols in your code blocks. For example, the following code block:
+\begin{lstlisting}[language=MyTex]
+$\backslash$begin{lstlisting}
+Area($\$$r$\$$) = $\$\backslash$pi r $\string^$ 2$\$$
+$\backslash$end{lstlisting}
+\end{lstlisting}
+Will render like this:
+\begin{lstlisting}
+Area($r$) = $\pi r^2$
+\end{lstlisting}
+
+\subsection{Logic}
+The logic preamble contains useful features for writing LTL (Linear Temporal Logic) and CTL (Computation Tree Logic) amongst other things. Use the \T{logic} preamble at the top of your document:
+\begin{lstlisting}[language=MyTex]
+\input{preambles/logic} \end{lstlisting}
+
+\block{LTL and CTL}{
+  \customfeature{Eventually}{$\backslash$eventually}{$\backslash$eventually}{\eventually}
+  \customfeature{Always}{$\backslash$always}{$\backslash$always}{\always}
+  \customfeature{Until}{$\backslash$until}{$\backslash$until}{\until}
+  \customfeature{Weak Until}{$\backslash$weakuntil}{$\backslash$weakuntil}{\weakuntil}
+  \customfeature{Release}{$\backslash$release}{$\backslash$release}{\release}
+  \customfeature{Next}{$\backslash$nex}{$\backslash$nex}{\nex}
+  \customfeature{True}{$\backslash$true}{$\backslash$true}{\true}
+  \customfeature{False}{$\backslash$false}{$\backslash$false}{\false}
+}
+
+\block{Similarity and Bisimilarity}{
+  \customfeature{Similarity}{$\backslash$similar}{$\backslash$similar}{\similar}
+  \customfeature{Bisimilarity}{$\backslash$bisimilar}{$\backslash$bisimilar}{\bisimilar}
+  \customfeature{Simulated By}{$\backslash$simulatedby}{$\backslash$simulatedby}{\simulatedby}
+}
+
+\subsection{Protocols}
+The protocols preamble contains a useful macro for drawing protocols. Use the \T{protocols} preamble at the top of your document:
+\begin{lstlisting}[language=MyTex]
+\input{preambles/protocols} \end{lstlisting}
+
+\subsubsection{Protocol Diagrams}
+The \T{protocols} preamble contains a macro for drawing protocol diagrams. One can define a protocol diagram like so:
+\begin{lstlisting}[language=MyTex]
+\protocol[$\$$x$\$$]{ZK from $\$\backslash$Sigma$\$$-protocols}{
+  \party{P}{Prover}
+  \party{V}{Verifier}
+
+  \knows{V}{$\$$G(k) $\backslash$mapsto (x', w') $\backslash$in R$\$$}{right}
+  \msg{V}{$\$$x'$\$$, proof that $\$$V$\$$ knows $\$$w'$\$$}{P}
+
+  \knows{P}{Accept/Reject proof}{left}
+  \msg{P}{Proof that $\$$P$ knows $\$$w$\$$ or $\$$w'$\$$}{V}
+}\end{lstlisting}
+The result is a protocol diagram like this:
+\protocol[$x$]{ZK from $\Sigma$-protocols}{
+  \party{P}{Prover}
+  \party{V}{Verifier}
+
+  \knows{V}{$G(k) \mapsto (x', w') \in R$}{right}
+  \msg{V}{$x'$, proof that $V$ knows $w'$}{P}
+
+  \knows{P}{Accept/Reject proof}{left}
+  \msg{P}{Proof that $P$ knows $w$ or $w'$}{V}
+}
+\block{Features}{
+  \customfeature{Protocol}{$\backslash$protocol\ \ \ \ \ [public]\ \ \ \ \ \{name\}\ \ \ \ \{body\} \ \ \ \ \ \ \ public is optional.}{$\backslash$protocol[public]\{name\}\ \ \ \ \ \{$\backslash$party\{P\}\{Prover\}\ \ \ \ \ \ \  $\backslash$party\{V\}\{Verifier\}\}}{See following.}
+  \customfeature{Party \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (use in body)}{$\backslash$party\ \ \ \ \ \ \ \ \{symbol\}\ \ \{name\}}{$\backslash$party\{P\}\{Prover\}}{See following.}
+  \customfeature{Knows  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (use in body)}{$\backslash$knows\ \ \ \ \ \ \ \ \{symbol\}\ \ \{message\}\ \{side\}}{$\backslash$knows\{V\}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{something private\}\ \ \ \ \{left\}}{See following.}
+  \customfeature{Message \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (use in body)}{$\backslash$msg\{from\}\ \ \ \ \{message\}\ \{to\}}{$\backslash$msg\{V\}\{hello\}\{P\}}{See following.}
+  \customfeature{Condition \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (use in body)}{$\backslash$cond\ \ \ \ \ \ \ \ \ \{message\}\ \{parties\}}{$\backslash$cond\{Wait for P.\}\{P,V\}}{See following.}
+}
+\B{Protocol example:}
+\protocol[public]{name}{
+  \party{P}{Prover}
+  \party{V}{Verifier}
+}
+\B{Party example:}
+\protocol[public]{name}{
+  \party{P}{Prover}
+}
+\B{Knows example:}
+\protocol[public]{name}{
+  \party{V}{Verifier}
+  \knows{V}{something private}{left}
+}
+\B{Message example:}
+\protocol[public]{name}{
+  \party{P}{Prover}
+  \party{V}{Verifier}
+  \msg{V}{hello}{P}
+}
+\B{Condition example:}
+\protocol[public]{name}{
+  \party{P}{Prover}
+  \party{V}{Verifier}
+  \cond{Wait for P.}{P,V}
+}
+
+
+\pagebreak 
+\bibliography{refs}
+
+\end{document}
