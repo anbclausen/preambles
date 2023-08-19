@@ -29,7 +29,7 @@ with `pdflatex`.
 
 Alternatively, you can download this repo and place the `preambles/` folder next to your `.tex` files.
 
-I recommond using the [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) extension for VS Code and adding the following to your `.vscode/settings.json`:
+I recommend using the [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) extension for VS Code and adding the following to your `.vscode/settings.json`:
 ```
 {
   "files.exclude": {
