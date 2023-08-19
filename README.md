@@ -9,9 +9,11 @@ You need to add this repository as a git submodule with
 ```
 cd root/of/your/git/project
 git submodule add https://github.com/anbclausen/iris-cheatsheet.git
+git submodule update --init --recursive
 ```
 After this, you can just follow the examples. To make a minimal article compile
 ```
+\documentclass{article}
 \input{preambles/article}
 
 \title{Your Title}
@@ -26,5 +28,41 @@ After this, you can just follow the examples. To make a minimal article compile
 with `pdflatex`.
 
 Alternatively, you can download this repo and place the `preambles/` folder next to your `.tex` files.
+
+I recommond using the [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) extension for VS Code and adding the following to your `.vscode/settings.json`:
+```
+{
+  "files.exclude": {
+    "*.aux": true,
+    "*.toc": true,
+    "*.gz": true,
+    "*.log": true,
+    "*.fls": true,
+    "*.fdb_latexmk": true,
+    "*.bbl": true,
+    "*.blg": true,
+    "*.nav": true,
+    "*.out": true,
+    "*.snm": true,
+    "*.synctex.gz": true,
+    "*.synctex": true,
+    "*.synctex(busy)": true,
+    "*.synctex.gz(busy)": true,
+    "*.vrb": true
+  },
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "pdflatex",
+      "tools": [
+        "pdflatex"
+      ]
+    }
+  ],
+  "latex-workshop.latex.search.rootFiles.exclude": [
+    "preambles/**"
+  ],
+  "editor.formatOnSave": false,
+}
+```
 
 Good luck!
