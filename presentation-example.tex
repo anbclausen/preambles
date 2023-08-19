@@ -1,3 +1,4 @@
+\documentclass{beamer}
 \input{presentation}
 \input{code}
 
@@ -22,6 +23,7 @@
 \begin{frame}[fragile]{Setup}
   Here is how to get going with a presentation:
   \begin{lstlisting}[language=MyTeX]
+\documentclass{beamer}
 \input{preambles/presentation}
 
 \title{Your Title}
@@ -63,125 +65,16 @@ $\ldots$
   \begin{block}{Article}
     For writing articles, use the \T{article} preamble at the top of your document:
     \begin{lstlisting}[language=MyTex]
+\documentclass{article}
 \input{preambles/article} \end{lstlisting}
   \end{block}
   \begin{block}{Presentation}
     For writing presentations, use the \T{presentation} preamble at the top of your document:
     \begin{lstlisting}[language=MyTex]
+\documentclass{beamer}
 \input{preambles/presentation} \end{lstlisting} 
   \end{block}
   Many more commands are available both for articles and presentations. Please see the article example for more information.
 \end{frame}
 
-\iffalse
-
-\subsection{Default}
-\begin{frame}{Default}
-  All the following commands are enabled by default.
-  \begin{block}{Common Text Commands}
-    \begin{itemize}
-      \item \T{\textbackslash{}I$\{\ldots\}$} for \I{italic} text
-      \item \T{\textbackslash{}B$\{\ldots\}$} for \B{bold} text
-      \item \T{\textbackslash{}U$\{\ldots\}$} for \U{underlining} text
-      \item \T{\textbackslash{}T$\{\ldots\}$} for \T{typewriter} text
-      \item \T{\textbackslash{}X$\{\ldots\}$} for \X{strike-through} text
-    \end{itemize}
-  \end{block}
-
-  \begin{block}{Special Sections}
-    \begin{itemize}
-      \item \T{\textbackslash{}todo} for inserting \todo
-      \item \T{\textbackslash{}comment$\{\ldots\}$} for inserting a comment: \comment{This is a comment.}
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Default Cont.}
-  \begin{block}{Colors}
-    \begin{itemize}
-      \item \T{\textbackslash{}color$\{\ldots\}$} for changing the color of following text: {\color{red} Red text}
-    \end{itemize}
-    Using \T{xcolor} package.
-  \end{block}
-  \begin{block}{Links}
-    \begin{itemize}
-      \item \T{\textbackslash{}url$\{\ldots\}$} for inserting a link: \url{http://aekvi.com}
-    \end{itemize}
-    Using \T{hyperref} package.
-  \end{block}
-  \begin{block}{Citing and Bibliography}
-    \begin{itemize}
-      \item \T{\textbackslash{}bibliography{refs}} for inserting bibliography (assuming \T{refs.bib} exists)
-      \item \T{\textbackslash{}cite$\{\ldots\}$} for citing a reference
-      \item \T{\textbackslash{}citep$\{\ldots\}$} for citing a reference in parenthesis
-    \end{itemize}
-    Using \T{natbib} package.
-  \end{block}
-\end{frame}
-
-\begin{frame}{Default Cont.}
-  \begin{block}{Images}
-    \begin{itemize}
-      \item \T{\textbackslash{}img$[scale]\{src\}$} for inserting a centered image from \T{src} (assuming \T{src} exists) scaled by \T{scale} (optional, default: 0.5):
-      
-      \img[0.2]{assets/mandelbrot_set}
-    \end{itemize}
-  \end{block}
-  \begin{block}{Aarhus University, CS Department Logo}
-    \begin{itemize}
-      \item \T{\textbackslash{}csau} for inserting the Aarhus University, Department of Computer Science logo:
-      
-      \csau
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Default Cont.}
-  \begin{block}{Plots}
-    \begin{itemize}
-      \item \T{\textbackslash{}plot$[xmin][xmax][ymin][ymax]\{f\}$} for inserting a centered plot of \T{f} with the specified bounds (optional, default: $[-2, 10, -2, 10]$): 
-      
-      $f = sin(x)$
-      
-      \plot[-2][10][-2][2]{sin(deg(x))}
-      
-    \end{itemize}
-    Using \T{pgfplots} package.
-  \end{block}
-\end{frame}
-
-\begin{frame}{Default Cont.}
-  \begin{block}{TikZ}
-    \begin{itemize}
-      \item See OverLeafs tutorial on TikZ: \url{https://www.overleaf.com/learn/latex/TikZ_package}
-      \item Using TikZ libraries \T{arrows}, \T{shapes} and \T{automata} by default
-    \end{itemize}
-  \end{block}
-  \begin{block}{Math}
-    \begin{itemize}
-      \item \T{\textbackslash{}Xb} for any symbol $X \in A \ldots Z$ for \T{mathbb} symbols: \Ab, \Bb, \Cb, \ldots
-      \item \T{\textbackslash{}Xc} for any symbol $X \in A \ldots Z$ for \T{mathcal} symbols: \Ac, \Bc, \Cc, \ldots
-      \item \T{\textbackslash{}xor} for $\xor$
-      \item \T{\textbackslash{}beq} for $\beq$ (Boolean equality)
-      \item \T{\textbackslash{}mod} for a (nicely behaving) modulo operator: $a \mod b$
-      \item \T{\textbackslash{}QED} for \QED
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\subsection{Code}
-\begin{frame}[fragile]{Code}
-  The following commands are only available when using the \T{code} preamble.
-  \begin{lstlisting}[language=MyTeX]
-\input{preambles/code} \end{lstlisting}
-  We make use of the \T{lstlisting} environment from the \T{listings} package.
-  \begin{lstlisting}[language=MyTeX]
-\begin$ ${lstlisting}[language=$\ldots$] 
-$\ldots$
-\end$ ${lstlisting} \end{lstlisting}
-\end{frame}
-\subsection{Logic}
-\subsection{Protocols}
-
-\fi
 \end{document}

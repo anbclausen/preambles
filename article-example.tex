@@ -1,3 +1,4 @@
+\documentclass{article}
 \input{article}
 \input{handin}
 \input{code}
@@ -50,6 +51,7 @@ $\backslash{}$#2$\{$#3$\}$ #4^^J
 \section{Setup}
 Here is how to get going with an article:
 \begin{lstlisting}[language=MyTeX]
+\documentclass{article}
 \input{preambles/article}
 
 \title{Your Title}
@@ -65,9 +67,11 @@ $\ldots$
 \subsection{Articles and Presentations}
 Specify the type of document you are writing by choosing a preamble. For writing articles, use the \T{article} preamble at the top of your document:
 \begin{lstlisting}[language=MyTex]
+\documentclass{article}
 \input{preambles/article} \end{lstlisting}
 For writing presentations, use the \T{presentation} preamble at the top of your document:
 \begin{lstlisting}[language=MyTex]
+\documentclass{beamer}
 \input{preambles/presentation} \end{lstlisting} 
 
 \subsection{Default}
@@ -226,6 +230,7 @@ The result is a protocol diagram like this:
   \party{P}{Prover}
   \party{V}{Verifier}
 }
+\pagebreak
 \B{Party example:}
 \protocol[public]{name}{
   \party{P}{Prover}
