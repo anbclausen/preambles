@@ -22,5 +22,14 @@
       "language": "latex",
       "scheme": "file"
     }
-  ]
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "pdflatex",
+      "tools": [
+        "pdflatex"
+      ]
+    }
+  ],
+  "editor.formatOnSave": false,
 }
