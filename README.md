@@ -8,7 +8,7 @@ Great question! See [Article Example](article-example.pdf) for an example of how
 You need to add this repository as a git submodule with
 ```
 cd root/of/your/git/project
-git submodule add https://github.com/anbclausen/iris-cheatsheet.git
+git submodule add https://github.com/anbclausen/preambles.git
 git submodule update --init --recursive
 ```
 After this, you can just follow the examples. To make a minimal article compile
