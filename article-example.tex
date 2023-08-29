@@ -133,18 +133,26 @@ The handin preamble contains useful features for writing handins. Use the \T{han
 \begin{lstlisting}[language=MyTex]
 \input{preambles/handin} \end{lstlisting}
 
-\subsubsection{Question Areas}
+\subsubsection{Question and Remark Areas}
 Question areas are used to highlight exercise descriptions and solutions. You can define a question like so:
 \begin{lstlisting}[language=MyTex]
 \question{Prove $\$$P = NP$\$$.}\end{lstlisting}
 This will render a question area like this:
 
 \question{Prove $P = NP$.}
+
+\noindent
+A similar useful feature is adding a remark:
+\begin{lstlisting}[language=MyTex]
+\remark{Proving $\$$P = NP$\$$ is pretty hard.}\end{lstlisting}
+This will render a remark area like this:
+
+\remark{Proving $P = NP$ is pretty hard.}
+
 \subsection{Code}
 The code preamble contains useful features for writing code. Use the \T{code} preamble at the top of your document:
 \begin{lstlisting}[language=MyTex]
 \input{preambles/code} \end{lstlisting}
-
 \subsubsection{Code Blocks}
 The \T{listings} package is used to render code blocks. One can define a code block like so:
 \begin{lstlisting}[language=MyTex]
