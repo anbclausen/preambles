@@ -15,3 +15,20 @@
     \\
     \noindent
 }
+
+\newcommand{\remark}[1]{%
+    \vspace*{6pt}
+    \setlength{\fboxsep}{0.15cm}
+    \noindent
+    \colorbox{gray!15}{%
+        \begin{minipage}{1\linewidth}%
+            \vspace*{2pt}
+            \textbf{Remark: }#1
+            \vspace*{2pt}
+        \end{minipage}%
+    }
+    \setlength{\parindent}{0.5cm}
+    \vspace*{6pt}
+    \\
+    \noindent
+}
