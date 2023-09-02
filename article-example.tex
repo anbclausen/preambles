@@ -176,7 +176,7 @@ Area($r$) = $\pi r^2$
 \end{lstlisting}
 
 \subsection{Logic}
-The logic preamble contains useful features for writing LTL (Linear Temporal Logic) and CTL (Computation Tree Logic) amongst other things. Use the \T{logic} preamble at the top of your document:
+The logic preamble contains useful features for writing LTL (Linear Temporal Logic) and CTL (Computation Tree Logic), higher-order intuitionistic logics like Iris amongst other things. Use the \T{logic} preamble at the top of your document:
 \begin{lstlisting}[language=MyTex]
 \input{preambles/logic} \end{lstlisting}
 
@@ -195,6 +195,12 @@ The logic preamble contains useful features for writing LTL (Linear Temporal Log
   \customfeature{Similarity}{$\backslash$similar}{$\backslash$similar}{\similar}
   \customfeature{Bisimilarity}{$\backslash$bisimilar}{$\backslash$bisimilar}{\bisimilar}
   \customfeature{Simulated By}{$\backslash$simulatedby}{$\backslash$simulatedby}{\simulatedby}
+}
+
+\block{Iris}{
+  \customfeature{Entails}{$\backslash$entails}{$\backslash$entails}{\entails}
+  \customfeature{Points To}{$\backslash$pointsto}{$\backslash$pointsto}{\pointsto}
+  \customfeature{Wand}{$\backslash$wand}{$\backslash$wand}{\wand}
 }
 
 \subsection{Protocols}
